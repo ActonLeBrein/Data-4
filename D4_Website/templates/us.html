@@ -1,0 +1,81 @@
+{% extends 'main_D4.html' %}
+{% block content %}
+{% load staticfiles %}
+	<div class="row">
+		{% csrf_token %}
+	    {% for i in info %}
+	    <div class="col-md-12 au">
+	        <h1>ABOUT US</h1>
+	    </div>
+	    <div id="uss" class="col-md-12">
+	        <p>{{i.about|safe}}</p>
+	    </div>
+	    <div id="us_img" class="col-md-12"></div>
+	    <div class="col-md-4 bus">
+	    	<p class="sub">WHAT WE DO</p>
+	    	<hr>
+	    	<p class="des">{{i.what_we_do|safe}}</p>
+	    </div>
+	    <div class="col-md-4 bus">
+	    	<p class="sub">DATA4 STORY</p>
+	    	<hr>
+	    	<p class="des">{{i.story|safe}}</p>
+	    </div>
+	    <div class="col-md-4 bus">
+	    	<p class="sub">DATA4 MANIFESTO</p>
+	    	<hr>
+	    	<p class="des">{{i.manifesto|safe}}</p>
+	    </div>
+	    <!-- <div class="col-md-12 te">
+	    	<h1>TEAM</h1>
+	    </div>
+	    <div class="col-md-12 ta">
+	    	<p>{{i.team|safe}}</p>
+	    </div>
+	    {% for j in users %}
+	    <div class="col-md-3 user">
+	    	<div class="col-md-12">
+		    	<div class="img-circle" style="background-image:url('{% static j.profile_picture.url %}'); background-size:cover"></div>
+		    	<div class="img-circle info" style="background:rgba(70, 165, 162, 0.7);">
+		    		<div class="col-md-4 social">
+			    		<a href="{{j.twitter|safe}}" target="_blank">
+			    			<img src="{% static "img/TWITTER.png" %}" class="twitter">
+			    		</a>
+			    	</div>
+			    	<div class="col-md-4 social">
+			    		<a href="#" data-toggle="tooltip" data-placement="top" title="{{j.skype|safe}}">
+		    				<img src="{% static "img/SKYPE.png" %}" class="skype">
+		    			</a>
+		    		</div>
+		    		<div class="col-md-4 social">
+			    		<a href="{{j.linkdin|safe}}" target="_blank">
+			    			<img src="{% static "img/LINKEDIN.png" %}" class="linkedin">
+			    		</a>
+			    	</div>
+		    	</div>
+			</div>
+			<div class="col-md-12 user_info">
+				<p class="user_full_name">{{j.user.first_name|safe}} {{j.user.last_name|safe}}</p>
+				<p class="user_employment">{{j.employment|safe}}</p>
+			</div>
+			<div class="col-md-12">
+				<p class="user_about">{{j.about|safe}}</p>
+			</div>
+	    </div>
+	    {% endfor %} -->
+	    <div class="col-md-12 cli">
+	    	<h1>CLIENTS</h1>
+	    </div>
+	    {% for k in clients %}
+	    <div class="col-md-3 cli_logo">
+			<img src={% static k.logo.url %} >
+	    </div>
+	    {% endfor %}
+	    {% endfor %}
+	    <!-- <div class="col-md-12 quo">
+	    	<a href="#">
+	    		<img src="{% static "img/REQUEST-A-QUOTE.png" %}">
+	    	</a>
+	    </div> -->
+	</div>
+{% endblock %}

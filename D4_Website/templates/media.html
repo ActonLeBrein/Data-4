@@ -1,0 +1,205 @@
+{% extends 'main_D4.html' %}
+{% block content %}
+{% load staticfiles %}
+	<div class="row">
+		{% csrf_token %}
+	    <div class="col-md-12 med">
+	        <h1>
+	        	<p>ARTICLES</p>
+	        </h1>
+	    </div>
+	    <div id="images_pro" class="col-md-5">
+	    	{% if searchs_list %}
+	    		{% for i in searchs_list|slice:":4" %}
+			    	<img src="{% static i.image.url %}" class"img_proj">
+				{% endfor %}
+	    	{% elif rec_post %}
+	    		<img src="{% static rec_post.image.url %}" class"img_proj">
+	    	{% elif date_post %}
+	    		{% for i in date_post|slice:":4" %}
+			    	<img src="{% static i.image.url %}" class"img_proj">
+				{% endfor %}
+	    	{% elif cat_post %}
+	    		{% for i in cat_post|slice:":4" %}
+			    	<img src="{% static i.image.url %}" class"img_proj">
+				{% endfor %}
+	    	{% elif tag_post %}
+	    		{% for i in tag_post|slice:":4" %}
+			    	<img src="{% static i.image.url %}" class"img_proj">
+				{% endfor %}
+	    	{% else %}
+			    {% for i in blog|slice:":4" %}
+			    	<img src="{% static i.image.url %}" class"img_proj">
+				{% endfor %}
+			{% endif %}
+	    </div>
+	    <div id="descp_pro" class="col-md-4">
+	    	{% if searchs_list %}
+	    		{% for j in searchs_list|slice:":4" %}
+		    		<div>
+			    		<h1>
+			    			<p>{{j.title}}</p>
+			    			<hr>
+			    		</h1>
+			    		<p class="tittle">{{j.posted}}</p>
+			    		<p class="descript">
+			    			{% if  j.body|length < 430 %}
+		                        {{j.body|safe}}
+		                    {% else %}
+		                        {{ j.body|slice:":430"|safe }}...
+		                    {% endif %}
+		                    <a href="#">Read More</a>
+			    		</p>
+			    	</div>
+		    	{% endfor %}
+	    	{% elif rec_post %}
+	    		<div>
+		    		<h1>
+		    			<p>{{rec_post.title}}</p>
+		    			<hr>
+		    		</h1>
+		    		<p class="tittle">{{rec_post.posted}}</p>
+		    		<p class="descript">
+		    			{% if  rec_post.body|length < 430 %}
+	                        {{rec_post.body|safe}}
+	                    {% else %}
+	                        {{ rec_post.body|safe|slice:":430" }}...
+	                    {% endif %}
+	                    <a href="#">Read More</a>
+		    		</p>
+		    	</div>
+	    	{% elif date_post %}
+	    		{% for j in date_post|slice:":4" %}
+		    		<div>
+			    		<h1>
+			    			<p>{{j.title}}</p>
+			    			<hr>
+			    		</h1>
+			    		<p class="tittle">{{j.posted}}</p>
+			    		<p class="descript">
+			    			{% if  j.body|length < 430 %}
+		                        {{j.body|safe}}
+		                    {% else %}
+		                        {{ j.body|safe|slice:":430" }}...
+		                    {% endif %}
+		                    <a href="#">Read More</a>
+			    		</p>
+			    	</div>
+		    	{% endfor %}
+	    	{% elif cat_post %}
+	    		{% for j in cat_post|slice:":4" %}
+		    		<div>
+			    		<h1>
+			    			<p>{{j.title}}</p>
+			    			<hr>
+			    		</h1>
+			    		<p class="tittle">{{j.posted}}</p>
+			    		<p class="descript">
+			    			{% if  j.body|length < 430 %}
+		                        {{j.body|safe}}
+		                    {% else %}
+		                        {{ j.body|safe|slice:":430" }}...
+		                    {% endif %}
+		                    <a href="#">Read More</a>
+			    		</p>
+			    	</div>
+		    	{% endfor %}
+	    	{% elif tag_post %}
+	    		{% for j in tag_post|slice:":4" %}
+		    		<div>
+			    		<h1>
+			    			<p>{{j.title}}</p>
+			    			<hr>
+			    		</h1>
+			    		<p class="tittle">{{j.posted}}</p>
+			    		<p class="descript">
+			    			{% if  j.body|length < 430 %}
+		                        {{j.body|safe}}
+		                    {% else %}
+		                        {{ j.body|safe|slice:":430" }}...
+		                    {% endif %}
+		                    <a href="#">Read More</a>
+			    		</p>
+			    	</div>
+		    	{% endfor %}
+	    	{% else %}
+		    	{% for j in blog|slice:":4" %}
+		    		<div>
+			    		<h1>
+			    			<p>{{j.title}}</p>
+			    			<hr>
+			    		</h1>
+			    		<p class="tittle">{{j.posted}}</p>
+			    		<p class="descript">
+			    			{% if  j.body|length < 430 %}
+		                        {{j.body|safe}}
+		                    {% else %}
+		                        {{ j.body|safe|slice:":430" }}...
+		                    {% endif %}
+		                    <a href="#">Read More</a>
+			    		</p>
+			    	</div>
+		    	{% endfor %}
+		    {% endif %}
+	    </div>
+	    <div id="search_art" class="col-md-3">
+			<div class="col-lg-12">
+				<form method="POST" action="{% url 'search_post' %}" id="sr_pst">
+					{% csrf_token %}
+					<div class="input-group">
+						<input type="text" name="keywords" class="form-control" placeholder="Search...">
+						<span class="input-group-btn">
+							<button class="btn btn-default glyphicon glyphicon-chevron-right" type="submit"></button>
+						</span>
+					</div>
+				</form>
+			</div>
+			<div id="recent_post" class="col-md-12">
+				<h4 class="h4_rec_post">
+					<p class="rec_tit">Recent Posts</p>
+					<hr>
+				</h4>
+				<h4 class="h4_post">
+					{% for k in blog|slice:":5" %}
+						<a href="{% url 'recent_post' k.slug %}">
+							<p class="rec_post_tit">{{k.title}}</p>
+						</a>
+					{% endfor %}
+				</h4>
+				<h4 class="h4_rec_post">
+					<p class="rec_tit">Archive</p>
+					<hr>
+				</h4>
+				<h4 class="h4_post">
+					{% for k in months|slice:":3" %}
+						<a href="{% url 'month_post' k.posted %}">
+							<p class="rec_post_tit">{{k.posted|date:'M'}}</p>
+						</a>
+					{% endfor %}
+				</h4>
+				<h4 class="h4_rec_post">
+					<p class="rec_tit">Categories</p>
+					<hr>
+				</h4>
+				<h4 class="h4_post">
+					{% for k in category %}
+						<a href="{% url 'category_post' k.slug %}">
+							<p class="rec_post_tit">{{k.title}}</p>
+						</a>
+					{% endfor %}
+				</h4>
+				<h4 class="h4_rec_post">
+					<p class="rec_tit">Tags</p>
+					<hr>
+				</h4>
+				<h4 class="h4_post">
+					{% for k in tag %}
+						<a href="{% url 'tag_post' k %}">
+							<p><kbd>{{k}}</kbd></p>
+						</a>
+					{% endfor %}
+				</h4>
+			</div>
+	    </div>
+	</div>
+{% endblock %}

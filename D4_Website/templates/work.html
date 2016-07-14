@@ -1,0 +1,201 @@
+{% extends 'main_D4.html' %}
+{% block content %}
+{% load staticfiles %}
+	<div class="row">
+		{% csrf_token %}
+		{% for i in info %}
+	    <div class="col-md-12 wo">
+	        <h1>WORK</h1>
+	        <p>{{i.work}}</p>
+	    </div>
+	    <div id="work_img" class="col-md-12">
+	    	<div class="col-md-4">
+	    		<img src="{% static "img/img_work_iPad.png" %}">
+	    	</div>
+	    	<div class="col-md-8 an">
+	    		<h1>ANALYSIS</h1>
+	    		<h4>Econometrics</h4>
+	    		<p>{{i.economic|safe}}</p>
+	    		<h4>Geo-locational Tools</h4>
+	    		<p>{{i.geolocation|safe}}</p>
+	    	</div>
+	    </div>
+	    <div class="col-md-6 com x">
+	    	<h1>COMMUNICATIONS</h1>
+	    	<p>{{i.comunication|safe}}</p>
+	    </div>
+	    <div class="col-md-6 mng x verticalLine">
+	    	<h1>MANAGEMENT PLATFORMS</h1>
+	    	<p>{{i.management|safe}}</p>
+	    </div>
+	    {% endfor %}
+	    <!-- <div id="act" class="col-md-12">
+	    	<p>
+		    	<a href="{% url 'work' %}">All</a>
+	    	{% for i in category %}
+		    	<a href="{% url 'category_job' i.slug %}">{{i.title}}</a>
+		    {% endfor %}
+		    </p>
+	    </div> -->
+	    <!-- <div id="filters1" class="button-group">
+	    	<button class="button is-checked" data-filter="*">All</button>
+	    {% for i in category %}
+		  <button class="button" data-filter=".{{i.title}}">{{i.title}}</button>
+	    {% endfor %}
+		  <button class="button" data-filter=".transition">transition</button>
+		  <button class="button" data-filter=".alkali, .alkaline-earth">alkali and alkaline-earth</button>
+		  <button class="button" data-filter=":not(.transition)">not transition</button>
+		  <button class="button" data-filter=".metal:not(.transition)">metal but not transition</button>
+		  <button class="button" data-filter="numberGreaterThan50">number > 50</button>
+		  <button class="button" data-filter="ium">name ends with &ndash;ium</button>
+		</div> -->
+		<div class="contenet_proyects">
+	    	{% if cat_job %}
+		    	{% for j in cat_job|slice:":8" %}
+			    	<div class="col-md-3 wor_art">
+			    		<img class="work_art_img" src="{% static j.0.image.url %}">
+				    	<div class="wor_art_hidden" style="background:rgba(70, 165, 162, 0.7);">
+				    		<a href="#" data-toggle="modal" data-target="#myModal{{forloop.counter}}">
+					    		<hr>
+					    			<h2>{{j.0.project_name|slice:":30"}}</h2>
+					    			<p>{{j.0.resume|safe|slice:":80"}}</p>
+					    		<hr>
+					    	</a>
+				    	</div>
+				    	<div class="modal fade" id="myModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									</div>
+									<div class="modal-body">
+										<div class="col-md-7-prueba">
+												<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+													<ol class="carousel-indicators">
+													{% for k in j.1 %}
+														{% if forloop.counter0 == 0 %}
+															<li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}" class="active"></li>
+														{% else %}
+															<li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+														{% endif %}
+													{% endfor %}
+													</ol>
+													<div class="carousel-inner">
+													{% for l in j.1 %}
+														{% if forloop.counter0 == 0 %}
+															<div class="item active">
+																<img src="{% static l.snapshoot_img.url %}">
+															</div>
+														{% else %}
+															<div class="item">
+																<img src="{% static l.snapshoot_img.url %}">
+															</div>
+														{% endif %}
+													{% endfor %}
+													</div>
+													<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+														<span class="glyphicon glyphicon-chevron-left"></span>
+													</a>
+													<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+														<span class="glyphicon glyphicon-chevron-right"></span>
+													</a>
+												</div>
+											</div>
+											<div class="col-md-5-prueba">
+												<h3 class="dato">{{j.0.project_name}}</h3>
+												<h4>{{j.0.resume|safe|safe}}</h4>
+												<h4>Date: {{j.0.start_date}}</h4>
+												<h4>Client: {{j.0.company}}</h4>
+												<h3 class="desc">Description</h3>
+												<p>{{j.0.description}}</p>
+												<a href="{{j.0.project_url}}" target="_blank">View Online Version </a>
+											</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+			    	</div>
+			    {% endfor %}
+		    {% else %}
+			    {% for j in zipped_list|slice:":8" %}
+			    	<div class="col-md-3 wor_art">
+			    		<img class="work_art_img" src="{% static j.0.image.url %}">
+				    	<div class="wor_art_hidden" style="background:rgba(70, 165, 162, 0.7);">
+				    		<a href="#" data-toggle="modal" data-target="#myModal{{forloop.counter}}">
+					    		<hr>
+					    			<h2>{{j.0.project_name|slice:":30"}}</h2>
+					    			<p>{{j.0.resume|safe|slice:":80"}}</p>
+					    		<hr>
+					    	</a>
+				    	</div>
+				    	<div class="modal fade" id="myModal{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">Close		<span aria-hidden="true">&times;</span><span class="sr-only">Close		</span></button>
+									</div>
+									<div class="modal-body">
+										<!-- <div class="col-md-12"> -->
+											<div class="col-md-7-prueba">
+												<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+													<ol class="carousel-indicators">
+													{% for k in j.1 %}
+														{% if forloop.counter0 == 0 %}
+															<li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}" class="active"></li>
+														{% else %}
+															<li data-target="#carousel-example-generic" data-slide-to="{{forloop.counter0}}"></li>
+														{% endif %}
+													{% endfor %}
+													</ol>
+													<div class="carousel-inner">
+													{% for l in j.1 %}
+														{% if forloop.counter0 == 0 %}
+															<div class="item active">
+																<img src="{% static l.snapshoot_img.url %}">
+															</div>
+														{% else %}
+															<div class="item">
+																<img src="{% static l.snapshoot_img.url %}">
+															</div>
+														{% endif %}
+													{% endfor %}
+													</div>
+													<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+														<span class="glyphicon glyphicon-chevron-left"></span>
+													</a>
+													<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+														<span class="glyphicon glyphicon-chevron-right"></span>
+													</a>
+												</div>
+											</div>
+											<div class="col-md-5-prueba">
+												<h3 class="dato">{{j.0.project_name}}</h3>
+												<h4>{{j.0.resume|safe|safe}}</h4>
+												<h4>Date: {{j.0.start_date}}</h4>
+												<h4>Client: {{j.0.company}}</h4>
+												<h3 class="desc">Description</h3>
+												<p>{{j.0.description}}</p>
+												<a href="{{j.0.project_url}}" target="_blank">View Online Version </a>
+											</div>
+										<!-- </div> -->
+									</div>
+									<!-- <div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									</div> -->
+								</div>
+							</div>
+						</div>
+			    	</div>
+			    {% endfor %}
+			{% endif %}
+		</div>
+	    <!-- <a href="#">
+	    	<div class="col-md-12 quo">
+	    		<p>+ Load More</p>
+	    	</div>
+	    </a> -->
+	</div>
+{% endblock %}

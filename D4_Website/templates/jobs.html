@@ -1,0 +1,47 @@
+{% extends 'main_D4.html' %}
+{%load static from staticfiles %}
+{% block seo %}
+	<link href="{% static "css/jobs.css"%}" rel="stylesheet">
+{% endblock seo %}
+{% block content %}
+	<div class="description_top">
+		<h1>Jobs</h1>
+		<p>Data4 brings a dedicated team of research, development and data-oriented professionals to the market. <br>
+		We’re always speaking with talented people about opportunities with our team and with many of the people with whom we work most closely. <br> 
+		Please review the positions <span>we’re currently interviewing for</span>, and <span>send your resume.</span> We’re always happy to hear from you.</p>
+	</div>
+	<div class="content_ofert">
+		<div class="row">
+			<div class="col-md-4 imagen">
+				<img src="{% static "img/Jobs.png"%}" alt="">
+			</div>
+		 	<div class="col-md-8 description">
+			  	<div class="header_description">
+			  		<h2>Work at data4</h2>
+			  		<p>Data4 is always interested, talented and hughly skilled professionals in our corner of the universe<br>In particular , we're presntly interested in hearing from</p>
+			  	</div>
+			  	<div class="content_ofert">
+			  		{% if not jobs %}
+			  			<h1>We feel it for the present time we do not have available works</h1>
+			  		{% else %}
+					  	{% for job in jobs %}
+			  			<h3>{{job.title}}</h3>
+					  	<p>{{job.description|safe}}</p>
+					  	<h3>Responsibilities</h3>
+					  	<p>{{job.requeriments|safe}}</p>
+					  	<h3>Requirements</h3>
+					  	<p>{{job.formalities|safe}}</p>
+					  	<p>Please <span>click here if you’d like to send your resume today.</span></p>
+					  	{% endfor %}
+			  		{% endif %}
+			  		<div class="footer_ofert">
+			  			<h2>SUBMIT YOUR RESUME</h2>
+						<p>Data4 is always talking with inspired and inspirational people.</p>
+						<p>Please <span>click here to review the skills and talents</span> we’re particularly interested in hearing from.</p>
+			  		</div>
+			  	</div>
+		  </div>
+		</div>
+	</div>
+
+{% endblock content %}	

@@ -1,0 +1,114 @@
+.col-md-12.med  {
+	margin-top: 79px;
+	margin-bottom: 79px;
+	height: 61px;
+	padding-left: 510px;
+}
+.col-md-12.med h1 {
+	font-size: 34px;
+	font-weight: bold;
+}
+.col-md-12.med h1 p {
+	border-bottom: 1px solid #000000;
+	padding-bottom: 30px;
+	width: 170px;
+}
+
+div#images_pro > img {
+	height: 256px;
+	margin-bottom: 116px;
+}
+
+div#descp_pro {
+	margin-top: 0px;
+}
+div#descp_pro > div > h1 {
+	font-size: 30px;
+	font-weight: bold;
+	color: #46a5a2;
+	text-align: left;
+	margin-top: -5px;
+}
+div#descp_pro > div {
+	height: 256px;
+	width: 100%;
+	margin-bottom: 120px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+div#descp_pro > div > h1 > hr {
+	width: 50%;
+	float: left;
+	border-top: 1px solid #828282;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+div#descp_pro > div > h1 > p {
+	margin: 0 0 0px;
+}
+div#descp_pro > div > p.tittle {
+	color: #828282;
+	font-size: 14px;
+	clear: both;
+}
+div#descp_pro > div > p.descript {
+	color: #828282;
+	font-size: 14px;
+	margin-bottom: 117px;
+}
+div#descp_pro > div > p.descript > a {
+	color: #46a5a2;
+	margin-left: 10px;
+}
+
+.col-lg-12 {
+	margin-left: -15px;
+}
+button.btn.btn-default {
+	margin-bottom: 0px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
+	font-size: 15px;
+	border-radius: 0px;
+	background-color: #46a5a2;
+	border: 1px solid #46a5a2;
+}
+button.btn.btn-default:hover {
+	background-color: #33CCCC;
+	border: 1px solid #33CCCC;
+}
+.glyphicon.glyphicon-chevron-right {
+	color: #FFFFFF;
+}
+input.form-control {
+	padding-bottom: 21px;
+	padding-top: 21px;
+	font-size: 15px;
+	background-color: #eee;
+	border-radius: 0px;
+	border: 0px solid #eee;
+}
+div#search_art > div#recent_post {
+	margin-left: -15px;
+}
+div#recent_post > h4.h4_rec_post > p.rec_tit {
+	margin-top: 50px;
+	font-weight: bold;
+	color: #828282;
+}
+div#recent_post hr {
+	margin-left: 0px;
+	width: 35%;
+	border-top: 1px solid #828282;
+}
+p.rec_post_tit {
+	color: #46a5a2;
+	margin-top: 30px;
+	font-weight: 500;
+}
+kbd {
+	font-family: 'Lato', sans-serif;
+	font-size: 80%;
+}

@@ -1,0 +1,125 @@
+.col-md-12.au > h1 {
+	font-size: 34px;
+	font-weight: bold;
+	margin-top: 79px;
+	height: 68px;
+}
+
+#uss > p {
+	margin: 35px; 
+	text-align: center;
+	font-size: 14px;
+	margin-bottom: 120px;
+	color: #828282;
+}
+#us_img {
+	height: 530px;
+	margin-bottom: 88px;
+}
+
+#us_img:after {
+	background: url('../img/us_img.png');
+	content: "";
+	display: block;
+	height: 530px;
+	width: 100%;
+	left: 0%;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+
+.col-md-4.bus {
+	height: 242px;
+	margin-bottom: 88px;
+}
+
+.sub {
+	font-size: 30px;
+	color: #46a5a2;
+	font-weight: bold;
+} 
+.des {
+	font-size: 14px;
+	color: #828282;
+}
+.col-md-12.te > h1 {
+	font-size: 34px;
+	font-weight: bold;
+	height: 67px;
+}
+
+.col-md-12.ta {
+	text-align: center;
+	height: 94px;
+}
+.col-md-12.ta > p{
+	font-size: 14px;
+	color: #828282;
+}
+
+.img-circle {
+	width: 176px;
+	height: 176px;
+	float:left;
+	border:2px solid #46a5a2;
+	margin-bottom: 52px;
+}
+.col-md-12.user_info {
+	height: 58px;
+}
+.user_full_name {
+	font-size: 19px;
+	color: #46a5a2;
+	font-weight: 300;
+	margin: 0;
+}
+.user_employment {
+	font-size: 19px;
+	color: #828282;
+	font-weight: 300;
+	margin: 0;
+}
+.user_about {
+	font-size: 14px;
+	color: #828282;
+}
+
+.col-md-12.cli > h1 {
+	font-size: 34px;
+	font-weight: bold;
+	height: 120px;
+}
+
+.img-circle.info {
+	position: absolute;
+	display: none;
+}
+
+.col-md-4.social {
+	margin-top: 65px;
+}
+.col-md-4.social >a > img {
+	width: 40px;
+}
+.twitter {
+	margin-left: 10px;
+}
+.skype {
+	margin-left: -4px;
+}
+.linkedin {
+	margin-left: -19px;
+}
+
+.col-md-3.cli_logo {
+	height: 175px;
+}
+.col-md-12.quo {
+	background-color: #46a5a2;
+	height: 105px;
+}
+.col-md-12.quo > a > img {
+	margin-top: 32.5px;
+	margin-left: 500px;
+}
